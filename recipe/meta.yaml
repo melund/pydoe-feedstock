@@ -6,7 +6,7 @@ package:
 
 source:
     fn: pyDOE-{{ version }}.zip
-    url: https://pypi.io/packages/source/p/pyDOE/pyDOE-{{ version }}.zip
+    url: https://pypi.org/packages/source/p/pyDOE/pyDOE-{{ version }}.zip
     sha1: de88a5868afc5bd567fa5d590c0035fb679dcfc3c32dfc103d8f0fa02d4ac76f
 
 build:
@@ -26,6 +26,8 @@ requirements:
     - numpy >=2.2.6
 
 test:
+  requires: 
+    - python {{ python_min }}
   imports:
     - pyDOE
 
