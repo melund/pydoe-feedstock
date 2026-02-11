@@ -32,6 +32,7 @@ test:
 about:
   home: https://github.com/tisimst/pyDOE
   license: BSD 3-Clause
+  license_file: LICENSE
   summary: Design of experiments for Python
   description: The pyDOE package is designed to help the scientist, engineer, statistician, etc., to construct appropriate experimental designs.
 
