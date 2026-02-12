@@ -1,40 +1,45 @@
-{% set version = "0.3.8" %}
+{% set version = "0.9.5" %}
+{% set python_min = "3.11" %}
 
 package:
   name: pydoe
   version: {{ version }}
 
 source:
-    fn: pyDOE-{{ version }}.zip
-    url: https://pypi.io/packages/source/p/pyDOE/pyDOE-{{ version }}.zip
-    sha1: 211c4d74a74109ac134dff31ed20c33141b48dbe
+    url: https://pypi.org/packages/source/p/pydoe/pydoe-{{ version }}.tar.gz
+    sha256: 1190db74480e0809d72958333fc9de28a274c7c35b70490864d8ce895bb128b4
 
 build:
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
   number: 1
 
 requirements:
   host:
     - pip
-    - python
-    - setuptools
+    - python {{ python_min }} 
+    - hatchling >=1.26
+    - hatch-vcs
 
   run:
-    - python
-    - scipy >=0.13
-    - numpy >=1.8
+    - python >={{ python_min }}
+    - scipy >=1.15.3
+    - numpy >=2.2.6
 
 test:
+  requires: 
+    - python {{ python_min }}
   imports:
     - pyDOE
 
 about:
   home: https://github.com/tisimst/pyDOE
-  license: BSD 3-Clause
+  license: BSD-3-Clause
+  license_file: LICENSE
   summary: Design of experiments for Python
   description: The pyDOE package is designed to help the scientist, engineer, statistician, etc., to construct appropriate experimental designs.
 
 extra:
   recipe-maintainers:
     - melund
+    - laraibg786
